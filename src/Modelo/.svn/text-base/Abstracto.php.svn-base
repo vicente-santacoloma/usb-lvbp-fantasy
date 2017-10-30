@@ -1,0 +1,208 @@
+<?php
+
+abstract class Modelo_Abstracto
+{
+
+    /**
+     * Listado genérico de objetos de este tipo
+     * 
+     * @todo implementar
+     */
+    public static function listar(){
+        
+    }
+
+
+    /**
+     * Reglexión de la clase actual
+     * 
+     * @var ReflectionClass
+     */
+    private $_reflexion;
+
+
+    /**
+     * Constructor del modelo. Acepta sólo dos tipos de llamadas.
+     * Puede llamarse sólo con los atributos que forman la clave primaria
+     * Puede llamarse con todos los atributos que forman la clase
+     * Se asume que los parámetros vienen en el orden en el que se declaran los atributos
+     */
+    public function __construct(){
+        
+        $args = func_get_args();
+        $tablaClase = new Rutinas_TablaClase($this);
+
+        //Obtener la cantidad de campos que conforman la clave primaria
+        $cantIds = count($tablaClase->getId());
+        //Obtener la cantidad de campos que van en el registro
+        $cantCampos = count($tablaClase->getValores());
+        //Obtener la cantidad de parámetros que se recibieron en la función
+        $cantParam = count($args);
+
+        //Si el constructor no recibió una cantidad de parámetros que concuerde con la cantidad de
+        //campos totales o campos pertenecientes a la clave primaria, hay un error
+        if ($cantIds != $cantParam && $cantCampos != $cantParam){
+            $claseExcepcion = get_class($this);
+            throw new $claseExcepcion();
+        }
+
+        if (null == $this->_reflexion){
+            $this->_reflexion = new ReflectionClass($this);
+        }
+
+        $propiedades = $this->_reflexion->getProperties();
+        $i = 0;
+        //Se asume que los parámetros vienen en el orden en el que se declararon las propiedades
+        foreach ($propiedades as $propiedad){
+            $nombrePropiedad = substr($propiedad->getName(), 1);
+            
+            //El modelo puede contener propiedades que no sean campos
+            if (!$this->isCampo($nombrePropiedad)){
+                continue;
+            }
+
+            $setter = 'set' . ucfirst($nombrePropiedad);
+            //Establecer el valor de la propiedad
+            $this->$setter($args[$i ++]);
+
+            //En caso de estar inicializando por id y ya se hayan puesto todos los campos tipo id
+            if (count($args) == $i){
+                break;
+            }
+        }
+    }
+
+
+    /**
+     * Maneja llamadas de setter y getter para que no deban ser definidas para cada
+     * propiedad
+     * 
+     * @todo hacer que las propiedades con comentarios específicos en el docbloc no
+     *       carguen setter/getter
+     * 
+     * @param String $nombreMetodo  Nombre del método inexistente invocado
+     * @param array  $args          Parámetros pasados al método en orden
+     * 
+     * @return mixed  depende de la acción realizada
+     */
+    public function __call($nombreMetodo, $args){
+
+        if (null == $this->_reflexion){
+            $this->_reflexion = new ReflectionClass($this);
+        }
+
+        $nombreClase = $this->_reflexion->getName();
+        $accion = substr($nombreMetodo, 0, 3);
+        //Manejar el llamado de un setter/getter
+        if ('set' == $accion || 'get' == $accion){
+            $nombrePropiedad = '_' . lcfirst(substr($nombreMetodo, 3));
+            if (!$this->_reflexion->hasProperty($nombrePropiedad)){
+                throw new Modelo_Excepcion("La propiedad '$nombrePropiedad' no existe en la clase '$nombreClase'");
+            }
+            $propiedad = $this->_reflexion->getProperty($nombrePropiedad);
+            if (!$propiedad->isPrivate()){
+                throw new Modelo_Excepcion("La propiedad '$nombrePropiedad' no es privada en la clase '$nombreClase'");
+            };
+
+            //TODO: verificar que esto no vuelve la propiedad pública. en dado caso hay que restaurar la visibilidad
+            $propiedad->setAccessible(true);
+            if ('set' == $accion){
+                if (1 != count($args)){
+                    throw new Modelo_Excepcion("El setter '$nombreMetodo' de la clase '$nombreClase' recibe un argumento");
+                }
+                $propiedad->setValue($this, $args[0]);
+                return;
+            }else{
+                if (0 != count($args)){
+                    throw new Modelo_Excepcion("El getter '$nombreMetodo' de la clase '$nombreClase' no recibe argumentos");
+                }
+                return $propiedad->getValue($this);
+            }
+        }
+
+        throw new Modelo_Excepcion("El método '$nombreMetodo' no está definido. Se pasaron los parámetros " . print_r($args, true));
+    }
+
+
+    public function isCampo($nombrePropiedad){
+        if (null == $this->_reflexion){
+            $this->_reflexion = new ReflectionClass($this);
+        }
+
+        return $this->_reflexion->hasProperty('_' . $nombrePropiedad);
+    }
+
+
+    /**
+     * Llama a la base de datos para cargar los datos de este objeto y los asigna
+     * 
+     * @return void
+     */
+    public function cargar(){
+        try{
+            Rutinas_BaseDatos::getInstance()->cargarObjeto($this);
+        }catch(Rutinas_BaseDatos_Excepcion $e){
+            $claseExcepcion = get_class($this) . '_Excepcion';
+            throw new $claseExcepcion("No se pudo cargar el objeto: $this: " . $e->getMessage());
+        }
+    }
+
+
+    /**
+     * Llama a la base de datos para crear los datos de este objeto
+     * 
+     * @return void
+     */
+    public function crear(){
+        try{
+            Rutinas_BaseDatos::getInstance()->crearObjeto($this);
+        }catch(Rutinas_BaseDatos_Excepcion $e){
+            $claseExcepcion = get_class($this) . '_Excepcion';
+            throw new $claseExcepcion("No se pudo crear el objeto: $this: " . $e->getMessage());
+        }
+    }
+
+
+    /**
+     * Llama a la base de datos para modificar los datos de este objeto
+     * 
+     * @return void
+     */
+    public function modificar(){
+        try{
+            Rutinas_BaseDatos::getInstance()->modificarObjeto($this);
+        }catch(Rutinas_BaseDatos_Excepcion $e){
+            $claseExcepcion = get_class($this) . '_Excepcion';
+            throw new $claseExcepcion("No se pudo modificar el objeto: $this: " . $e->getMessage());
+        }
+    }
+
+
+    /**
+     * Llama a la base de datos para eliminar este objeto
+     * 
+     * @return void
+     */
+    public function eliminar(){
+        try{
+            Rutinas_BaseDatos::getInstance()->eliminarObjeto($this);
+        }catch(Rutinas_BaseDatos_Excepcion $e){
+            $claseExcepcion = get_class($this) . '_Excepcion';
+            throw new $claseExcepcion("No se pudo eliminar el objeto: $this: " . $e->getMessage());
+        }
+    }
+
+
+    /**
+     * Representación en string del modelo
+     * 
+     * @todo hacer el to string genérico bien.
+     * 
+     * @return string  objeto de dominio en formato legible
+     */
+    public function __toString(){
+        ob_start();
+        var_dump($this);
+        return ob_get_clean();
+    }
+}

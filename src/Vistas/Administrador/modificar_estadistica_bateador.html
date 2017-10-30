@@ -1,0 +1,124 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>Fantasía LVBP - Gestionar Equipo</title>
+  <meta name="description" content="website description" />
+  <meta name="keywords" content="website keywords, website keywords" />
+  <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
+  <link rel="stylesheet" type="text/css" href="../style/style.css" />
+</head>
+
+<body>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <div id="logo_text">
+          <!-- class="logo_colour", allows you to change the colour of the text -->
+          <h1><a href="home.html">FANTASY<span class="logo_colour">LVBP</span></a></h1>
+          <h2>El mejor juego de fantasía</h2>
+        </div>
+      </div>
+      <div id="menubar">
+        <ul id="menu">
+          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+          <li><a href="gestionar.html">Home</a></li>
+          <li><a href="gestionarEquipo.html">Equipos LVBP</a></li>
+          <li class="selected"><a href="gestionarJuego.html">Calendario de Juegos</a></li>
+          <li><a href="../Usuario Logout/homeLogout.html">Logout</a></li>
+        </ul>
+      </div>
+	</div>
+    <div id="site_content">
+      <div class="sidebar">
+        <h1>Cuenta Administrador</h1>
+        <!--h4>Nombre: ... <br /> Apellido: ...</h4>
+        <h5>Otros Datos de usuario</h5>
+        <p>Este usuario es miembro del fantasy desde 1/1/197<br /> Puntos Acumulados: 100<br /><a href="#">Modificar Perfil</a></p-->
+        <h1>Gestión de Juegos</h1>
+        <ul>
+          <li><a href="gestionarEquipo.html">Gestionar Equipos y Jugadores</a></li>
+          <li><a href="gestionarJuego.html">Gestionar Juego</a></li>
+		  <li><a href="gestionarEstadistica.html">Gestionar Estadísticas</a></li>
+        </ul>
+        <h1>Búsqueda</h1>
+        <form method="post" action="#" id="Búsqueda_form">
+          <p>
+            <input class="Búsqueda" type="text" name="Búsqueda_field" value="Enter keywords....." />
+            <input name="Búsqueda" type="image" style="border: 0; margin: 0 0 -9px 5px;" src="style/Búsqueda.png" alt="Búsqueda" title="Búsqueda" />
+          </p>
+        </form>
+      </div>
+      <div id="content">
+		<h2>Estadísticas del Bateador</h2>
+        <p>Llene toda la información para el jugador:</p>
+		
+		<h1>- Nombre Jugador -</h1>
+		<form name="agregar" action="modificarEstadJuego.html">
+		<table style="width:60%; border-spacing:0;" id="marcador">
+          <tr><th style="text-align:center;" width=20%>Atributo</th>
+			  <th style="text-align:center;">Valor</th>
+		  </tr>
+		  <tr><td style="text-align:center;">ID</td>
+			  <td ><input type="text" name="ID" value="idJugador" disabled="disabled"></td>
+		  </tr>
+		  <tr><td style="text-align:center;">VB</td>
+			  <td ><input type="text" name="VB" value=""></td>
+		  </tr>
+		  <tr><td style="text-align:center;">C</td>
+			  <td ><input type="text" name="C" value=""></td>
+		  </tr>
+		  <tr><td style="text-align:center;">H</td>
+			  <td ><input type="text" name="H" value=""></td>
+		  </tr>
+		  <tr><td style="text-align:center;">2B</td>
+			  <td ><input type="text" name="2B" value=""></td>
+		  </tr>
+		  <tr><td style="text-align:center;">3B</td>
+			  <td ><input type="text" name="3B" value=""></td>
+		  </tr>
+		  <tr><td style="text-align:center;">HR</td>
+			  <td ><input type="text" name="HR" value=""></td>
+		  </tr>
+		  <tr><td style="text-align:center;">CI</td>
+			  <td ><input type="text" name="CI" value=""></td>
+		  </tr>
+		  <tr><td style="text-align:center;">BB</td>
+			  <td ><input type="text" name="BB" value=""></td>
+		  </tr>
+		  <tr><td style="text-align:center;">SO</td>
+			  <td ><input type="text" name="SO" value=""></td>
+		  </tr>
+		  <tr><td style="text-align:center;">DEB</td>
+			  <td ><input type="text" name="DEB" value=""></td>
+		  </tr>
+		  <tr><td style="text-align:center;">AVE</td>
+			  <td ><input type="text" name="AVE" value=""></td>
+		  </tr>
+		  <tr><td style="text-align:center;" colspan="2">
+					<input class="submit" type="submit" name="name" value="Modificar"/>
+					<a href="javascript:history.back(-1);">Cancelar</a></td>
+			  </td>
+			  
+		  </tr>
+        </table>
+		</form><br><br>
+		
+		
+        <!--p>Esta pagina ha sido desarrollada por brainsoft & SSSC para funcionar en cualquiera de estos exploradores:</p>
+        <ul>
+          <li>Internet Explorer 8</li>
+          <li>Internet Explorer 7</li>
+          <li>FireFox 3.5</li>
+          <li>Google Chrome 6</li>
+          <li>Safari 4</li>
+        </ul-->
+      </div>
+    </div>
+    <div id="footer">
+      <p><a href="gestionar.html">Home</a> | <a href="gestionarJuego.html">Calendario de Juegos</a></p>
+      
+    </div>
+  </div>
+<div style="text-align: center; font-size: 0.75em;">Desarrollado por Brainsoft & SSSC. Copyright &copy; 2011</div></body>
+</html>

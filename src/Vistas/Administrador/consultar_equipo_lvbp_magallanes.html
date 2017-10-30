@@ -1,0 +1,164 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>Fantasía LVBP - Gestionar Equipo</title>
+  <meta name="description" content="website description" />
+  <meta name="keywords" content="website keywords, website keywords" />
+  <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
+  <META http-equiv="Content-Script-Type" content="text/tcl">
+  <link rel="stylesheet" type="text/css" href="../style/style.css" />
+
+</head>
+
+<body>
+  <script type="text/javascript">
+function showHideTables(divid)
+{
+	document.getElementById(‘tablaTodos’).style.display=’none’;
+	document.getElementById(‘tablaLanzadores’).style.display=’none’;
+	document.getElementById(‘tablaReceptores’).style.display=’none’;
+	document.getElementById(‘tablaInfielder’).style.display=’none’;
+	document.getElementById(‘tablaOutfielder’).style.display=’none’;
+	
+	if (divid == "1"){
+		document.getElementById(‘tablaTodos’).style.display=’’;
+	}
+	else if (divid == "2"){
+		document.getElementById(‘tablaLanzadores’).style.display=’’;
+	}
+	else if (divid == "3"){
+		document.getElementById(‘tablaReceptores’).style.display=’’;
+	}
+	else if (divid == "4"){
+		document.getElementById(‘tablaInfielder’).style.display=’’;
+	}
+	else if (divid == "5"){
+		document.getElementById(‘tablaOutfielder’).style.display=’’;
+	}
+}
+</script>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <div id="logo_text">
+          <!-- class="logo_colour", allows you to change the colour of the text -->
+          <h1><a href="home.html">FANTASY<span class="logo_colour">LVBP</span></a></h1>
+          <h2>El mejor juego de fantasía</h2>
+        </div>
+      </div>
+      <div id="menubar">
+        <ul id="menu">
+          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+          <li><a href="gestionar.html">Home</a></li>
+          <li class="selected"><a href="gestionarEquipo.html">Equipos LVBP</a></li>
+          <li><a href="gestionarJuego.html">Calendario de Juegos</a></li>
+          <li><a href="../Usuario Logout/homeLogout.html">Logout</a></li>
+        </ul>
+      </div>
+	</div>
+    <div id="site_content">
+      <div class="sidebar">
+
+        <br>
+        <div style="padding-left: 12px;"> <IMG SRC="../images/magallanes.jpg" widht="180" height="180"> </div>
+
+        <br>
+        <h2 style="padding: 0px">Ciudad : &nbsp;Valencia</h2>
+        <h2 style="padding: 0px">Estadio : &nbsp;José Bernardo Pérez</h2>
+		<p> <a href="modificarEq.html">Modificar</a> <a href="" onclick="return confirm('¿Desea eliminar el Equipo?')">Eliminar</a></p>
+
+        <br>
+        
+        <p><span>Equipos :</span><br>
+        <a href="consultarEquipoLVBP_leones.html">Leones del Caracas</a><br>
+        <a href="">Navegantes del Magallanes</a><br>
+        <a href="consultarEquipoLVBP_tiburones.html">Tiburones de La Guaira</a><br>
+        <a href="consultarEquipoLVBP_tigres.html">Tigres de Aragua</a><br>
+        <a href="consultarEquipoLVBP_cardenales.html">Cardenales de Lara</a><br>
+        <a href="consultarEquipoLVBP_caribes.html">Caribes de Anzo&aacute;tegui</a><br>
+        <a href="consultarEquipoLVBP_aguilas.html">&Aacute;guilas del Zulia</a><br>
+        <a href="consultarEquipoLVBP_bravos.html">Bravos de Margarita</a><br></p>
+
+      </div>
+      <div id="content">
+        <h1>Equipos LVBP</h1>
+        <p>Aquí podrá gestionar todos los datos referentes a EQUIPOS LVBP y sus jugadores. </p>
+		
+		<h1>Jugadores :</h1>
+
+        <table style="border-spacing:0;">
+            <tr><th colspan=5>Busqueda : </th></tr>
+            <tr>
+				<td style="background: transparent;">
+                    <p><span>Nombre</span><br>
+                    <input type="text" name="nombreJugador"></p>
+                </td>
+                <td style="background: transparent;">
+                    <p><span>Apellido</span><br>
+                    <input type="text" name="apellidoJugador" value="" /></p>
+                </td>
+                <td style="background: transparent;">
+                    <p><span>Posicion</span><br>
+                    <select id="id" name="posicion" style="width:100px;" onchange="showHideTables('4');">
+                       <option value="1">Todos</option>
+                       <option value="2">Lanzadores</option>
+                       <option value="3">Receptores</option>
+                       <option value="4">Infielders</option>
+                       <option value="5">Outfielders</option>
+                    </select></p>
+                </td>
+                <!--td style="background: transparent;">
+                    <p><span>Average</span><br>
+                    <select id="id" name="average" style="width:50px;">
+                       <option value="1">1</option>
+                       <option value="2">2</option>
+                       <option value="3">3</option>
+                       <option value="4">4</option>
+                       <option value="5">5</option>
+                    </select></p>
+                </td>
+                <!--td style="background: transparent;">
+                    <p><span>Salario</span><br>
+                    <select id="id" name="name" style="width:70px;">
+                       <option value="1">1 Bs</option>
+                       <option value="2">2 Bs</option>
+                       <option value="3">3 Bs</option>
+                       <option value="4">4 Bs</option>
+                       <option value="5">5 Bs</option>
+                    </select></p>
+                </td-->
+            </tr>
+            <tr><input class="submit" type="submit" name="name" value="Buscar"/>
+				<form name="agregar" action="agregarJugador.html">
+					<input class="submit" type="submit" name="name" value="Agregar"/>
+				</form></tr></tr>
+        </table>
+
+		
+        <table style="width:100%; border-spacing:0;" id="tablaTodos">
+          <tr><th>Nro</th><th>Jugador</th><th>Posicion</th><th>AVG</th><th>Salario</th><th>Eliminar</th></tr>
+          <tr><td>81</td><td><a href="modificarJugador.html">Torres, Juan</td><td>Receptor</td><td>Item 1</td><td>Item 1</td>
+              <td ><input class="submit" type="submit" name="name" value="Eliminar" /></td></tr>
+          <tr><td>57</td><td><a href="modificarJugador.html">Gil, Leonardo</td><td>Infielder</td><td>Item 1</td><td>Item 1</td>
+              <td ><input class="submit" type="submit" name="name" value="Eliminar" /></td></td></tr>
+        </table>
+		
+        <!--h2>Compatibilidad con Exploradores</h2>
+        <p>Esta pagina ha sido desarrollada por brainsoft & SSSC para funcionar en cualquiera de estos exploradores:</p>
+        <ul>
+          <li>Internet Explorer 8</li>
+          <li>Internet Explorer 7</li>
+          <li>FireFox 3.5</li>
+          <li>Google Chrome 6</li>
+          <li>Safari 4</li>
+        </ul-->
+      </div>
+    </div>
+    <div id="footer">
+      <p><a href="gestionar.html">Home</a> | <a href="gestionarJuego.html">Calendario de Juegos</a></p>
+      
+    </div>
+  </div>
+<div style="text-align: center; font-size: 0.75em;">Desarrollado por Brainsoft & SSSC. Copyright &copy; 2011</div></body>
+</html>

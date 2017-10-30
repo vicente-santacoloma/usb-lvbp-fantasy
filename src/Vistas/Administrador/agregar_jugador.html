@@ -1,0 +1,181 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>Fantasía LVBP - Gestionar Equipo</title>
+  <meta name="description" content="website description" />
+  <meta name="keywords" content="website keywords, website keywords" />
+  <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
+  <link rel="stylesheet" type="text/css" href="../style/style.css" />
+</head>
+
+<body>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <div id="logo_text">
+          <!-- class="logo_colour", allows you to change the colour of the text -->
+          <h1><a href="home.html">FANTASY<span class="logo_colour">LVBP</span></a></h1>
+          <h2>El mejor juego de fantasía</h2>
+        </div>
+      </div>
+      <div id="menubar">
+        <ul id="menu">
+          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+          <li><a href="gestionar.html">Home</a></li>
+          <li  class="selected"><a href="gestionarEquipo.html">Equipos LVBP</a></li>
+          <li><a href="gestionarJuego.html">Calendario de Juegos</a></li>
+          <li><a href="../Usuario Logout/homeLogout.html">Logout</a></li>
+        </ul>
+      </div>
+	</div>
+    <div id="site_content">
+      <div class="sidebar">
+        <h1>Cuenta Administrador</h1>
+        <!--h4>Nombre: ... <br /> Apellido: ...</h4>
+        <h5>Otros Datos de usuario</h5>
+        <p>Este usuario es miembro del fantasy desde 1/1/197<br /> Puntos Acumulados: 100<br /><a href="#">Modificar Perfil</a></p-->
+        <h1>Gestión de Jugadores</h1>
+        <ul>
+		  <li><a href="gestionarEquipo.html">Gestionar Equipos y Jugadores</a></li>
+          <li><a href="gestionarJuego.html">Gestionar Juego</a></li>
+		  <li><a href="gestionarEstadistica.html">Gestionar Estadísticas</a></li>
+        </ul>
+        <h1>Búsqueda</h1>
+        <form method="post" action="#" id="Búsqueda_form">
+          <p>
+            <input class="Búsqueda" type="text" name="Búsqueda_field" value="Enter keywords....." />
+            <input name="Búsqueda" type="image" style="border: 0; margin: 0 0 -9px 5px;" src="style/Búsqueda.png" alt="Búsqueda" title="Búsqueda" />
+          </p>
+        </form>
+      </div>
+      <div id="content">
+        <h2>Agregar nuevo JUGADOR</h2>
+        <form action="gestionar.html" method="post" name="inscription">
+
+		<table width="600" border="0">
+
+		    <tr><td colspan="3">
+
+			<p align="justify">A continuaci&oacute;n agregue los datos del nuevo jugador.</p>
+
+		    </td></tr>
+
+			<tr>
+
+				<td align="right"><LABEL for="name">Nombre</LABEL> :
+
+				</td>
+
+				<td><input type="text" id="name" name="nom" value=""></td>
+
+				<td>
+
+				(use letras capitalizadas, por ejemplo: Jairo, Brandon)
+
+				</td>
+
+
+
+			</tr>
+
+			<tr>
+
+				<td align="right"><LABEL for="name">Apellido</LABEL> :
+
+				</td>
+
+				<td><input type="text" id="lastname" name="ape" value=""></td>
+
+				<td>
+
+				(use letras capitalizadas, por ejemplo: Ramos, Inge)
+
+				</td>
+
+
+
+			</tr>
+			
+			<tr>
+
+				<td align="right"><LABEL for="surname">Posición</LABEL> :</td>
+
+				<td><input type="text" name="posicion" id="pos" value=""></td>
+
+				<td>
+
+				(use el siguiente formato: XX)
+
+				</td>
+
+
+
+			</tr>
+
+			<tr>
+
+				<td align="right"><LABEL for="officialCode">Edad</LABEL> :</td>
+
+				<td><input type="text" name="age" id="Edad" value=""></td>
+
+				<td>
+
+
+				</td>
+
+
+			</tr>
+
+			<tr>
+
+				<td align="right"><LABEL for="officialCode">Equipo</LABEL> :</td>
+
+				<td><input type="text" name="equipo" id="Team" value="Equipo seleccionado" disabled="disabled"></td>
+
+				<td>
+
+
+				</td>
+
+
+			</tr>
+			
+			<tr>
+
+				<td align="right"><LABEL for="officialCode">Costo</LABEL> :</td>
+
+				<td><input type="text" name="costo" id="TOT" value=""></td>
+
+				<td>
+
+
+				</td>
+
+
+			</tr>
+
+			<tr>
+
+				<td><input type="hidden" name="submitRegistration" value="true"></td>
+
+
+
+				<td colspan="2">
+
+				<input type="submit" value="  Agregar Jugador  " >
+
+				&nbsp;&nbsp;<a href="javascript:history.back(-1);">Cancelar</a></td>
+
+			</tr>
+
+			</table>
+      </div>
+    </div>
+    <div id="footer">
+      <p><a href="gestionar.html">Home</a> | <a href="gestionarJuego.html">Calendario de Juegos</a></p>
+      
+    </div>
+  </div>
+<div style="text-align: center; font-size: 0.75em;">Desarrollado por Brainsoft & SSSC. Copyright &copy; 2011</div></body>
+</html>

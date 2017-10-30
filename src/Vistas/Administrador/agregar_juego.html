@@ -1,0 +1,148 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>Fantasía LVBP - Gestionar Equipo</title>
+  <meta name="description" content="website description" />
+  <meta name="keywords" content="website keywords, website keywords" />
+  <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
+  <link rel="stylesheet" type="text/css" href="../style/style.css" />
+</head>
+
+<body>
+  <div id="main">
+    <div id="header">
+      <div id="logo">
+        <div id="logo_text">
+          <!-- class="logo_colour", allows you to change the colour of the text -->
+          <h1><a href="home.html">FANTASY<span class="logo_colour">LVBP</span></a></h1>
+          <h2>El mejor juego de fantasía</h2>
+        </div>
+      </div>
+      <div id="menubar">
+        <ul id="menu">
+          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+          <li><a href="gestionar.html">Home</a></li>
+          <li><a href="gestionarEquipo.html">Equipos LVBP</a></li>
+          <li  class="selected"><a href="gestionarJuego.html">Calendario de Juegos</a></li>
+          <li><a href="../Usuario Logout/homeLogout.html">Logout</a></li>
+        </ul>
+      </div>
+	</div>
+    <div id="site_content">
+      <div class="sidebar">
+        <h1>Cuenta Administrador</h1>
+        <!--h4>Nombre: ... <br /> Apellido: ...</h4>
+        <h5>Otros Datos de usuario</h5>
+        <p>Este usuario es miembro del fantasy desde 1/1/197<br /> Puntos Acumulados: 100<br /><a href="#">Modificar Perfil</a></p-->
+        <h1>Gestión de Juegos</h1>
+        <ul>
+          <li><a href="gestionarEquipo.html">Gestionar Equipos y Jugadores</a></li>
+          <li><a href="gestionarJuego.html">Gestionar Juego</a></li>
+		  <li><a href="gestionarEstadistica.html">Gestionar Estadísticas</a></li>
+        </ul>
+        <h1>Búsqueda</h1>
+        <form method="post" action="#" id="Búsqueda_form">
+          <p>
+            <input class="Búsqueda" type="text" name="Búsqueda_field" value="Enter keywords....." />
+            <input name="Búsqueda" type="image" style="border: 0; margin: 0 0 -9px 5px;" src="style/Búsqueda.png" alt="Búsqueda" title="Búsqueda" />
+          </p>
+        </form>
+      </div>
+      <div id="content">
+        <h2>Agregar un nuevo JUEGO</h2>
+        
+        <form action="gestionarJuego.html" method="post" name="agregarJuego">
+
+		<table width="600" border="0">
+
+		    <tr><td colspan="3">
+
+			<p align="justify">A continuaci&oacute;n agregue los datos del nuevo juego.</p>
+
+		    </td></tr>
+
+			<tr>
+
+				<td align="right"><LABEL for="name">Equipo Home Club</LABEL> :
+
+				</td>
+
+				<td><select name="equipoHome" id="eqHome" onchange="">
+						<option selected value="0">-Seleccione equipo-</option>
+						<option value="1">Aguilas del Zulia</option>
+						<option value="2">Bravos de Margarita</option>
+						<option value="3">Cardenales de Lara</option> 
+						<option value="4">Caribes de Anzoategui</option>
+						<option value="5">Leones del Caracas</option>
+						<option value="6">Navegantes del Magallanes</option>
+						<option value="7">Tiburones de la Guaira</option> 
+						<option value="8">Tigres de Aragua</option>
+					</select></td>
+
+				
+
+
+
+			</tr>
+
+			<tr>
+
+				<td align="right"><LABEL for="name">Equipo visitante</LABEL> :
+
+				</td>
+
+				<td><select name="equipoVisit" id="eqVisit" onchange="">
+						<option selected value="0">-Seleccione equipo-</option>
+						<option value="1">Aguilas del Zulia</option>
+						<option value="2">Bravos de Margarita</option>
+						<option value="3">Cardenales de Lara</option> 
+						<option value="4">Caribes de Anzoategui</option>
+						<option value="5">Leones del Caracas</option>
+						<option value="6">Navegantes del Magallanes</option>
+						<option value="7">Tiburones de la Guaira</option> 
+						<option value="8">Tigres de Aragua</option>
+					</select></td>
+
+				
+
+
+
+			</tr>
+			
+			<tr>
+
+				<td align="right"><LABEL for="surname">Fecha del juego</LABEL> :</td>
+
+				<td><input type="text" name="fecha" id="date" value="DD-MM" disabled="disabled"></td>
+
+				
+
+
+
+			</tr>
+
+			<tr>
+
+				<td><input type="hidden" name="submitRegistration" value="true"></td>
+
+
+
+				<td colspan="2">
+
+				<input type="submit" value="  Aceptar  " >
+
+				&nbsp;&nbsp;<a href="javascript:history.back(-1);">Cancelar</a></td>
+
+			</tr>
+
+			</table>
+      </div>
+    </div>
+    <div id="footer">
+      <p><a href="gestionar.html">Home</a> | <a href="gestionarJuego.html">Calendario de Juegos</a></p>
+      
+    </div>
+  </div>
+<div style="text-align: center; font-size: 0.75em;">Desarrollado por Brainsoft & SSSC. Copyright &copy; 2011</div></body>
+</html>
