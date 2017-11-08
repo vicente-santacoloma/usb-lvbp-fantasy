@@ -1,2 +1,2 @@
 # usb-lvbp
-Simón Bolívar University - CI3715 - Software Engineering I - LVBP
+Simón Bolívar University - CI3715 - Software Engineering I - LVBP Fantasy
